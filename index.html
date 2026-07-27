@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOUA-</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 0; padding: 2rem; background: #f8fafc; color: #0f172a; }
+      main { max-width: 720px; margin: auto; background: #ffffff; border-radius: 16px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); padding: 2rem; }
+      h1 { margin-top: 0; }
+      p { line-height: 1.75; }
+      a.button { display: inline-block; margin-top: 1.5rem; padding: 0.9rem 1.4rem; background: #2563eb; color: white; text-decoration: none; border-radius: 9999px; }
+    </style>
+  </head>
+  <body>
+    <main id="content">
+      <h1>DOUA-</h1>
+      <p id="message">Chargement...</p>
+    </main>
+
+    <script>
+      const secretKey = 'DOUA-secret-9132';
+      const url = new URL(window.location.href);
+      const key = url.searchParams.get('key');
+      const content = document.getElementById('content');
+      const message = document.getElementById('message');
+
+      if (key === secretKey) {
+        content.innerHTML = `
+          <h1>DOUA-</h1>
+          <p>Bienvenue sur la page privée de présentation de DOUA-.</p>
+          <p>Seules les personnes disposant du lien secret peuvent voir ce contenu.</p>
+          <p>Partage ce lien :</p>
+          <p><strong>https://13chamslh.github.io/DOUA-?key=${secretKey}</strong></p>
+          <a class="button" href="https://13chamslh.github.io/DOUA-?key=${secretKey}" target="_blank">Ouvrir le site privé</a>
+        `;
+      } else {
+        content.innerHTML = `
+          <h1>Accès restreint</h1>
+          <p>Ce contenu est réservé aux personnes disposant du lien secret.</p>
+          <p>Demande le lien à la personne qui t'a invité.</p>
+        `;
+      }
+    </script>
+  </body>
+</html>
